@@ -34,14 +34,18 @@ function App() {
   return (
     <>
       <h1>Min filmlista</h1>
+      <h2>Lägg till en film</h2>
 
       <form onSubmit={addMovie}>
+        <label htmlFor="rating">Titel:</label>
         <input
           type="text"
           id="title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
+        
+        <label htmlFor="rating">Betyg:</label>
         <select
           id="rating"
           value={rating}
