@@ -8,8 +8,10 @@ function App() {
 
     function addMovie(event) {
       event.preventDefault()
+
       if (title.trim() === '') {
         alert('Du måste ange en filmtitel!')
+        return
       }
 
       const newMovie = { title: title, rating: Number(rating) }
@@ -17,15 +19,19 @@ function App() {
       setTitle('')
       setRating('1')
     }
+
     function removeMovie(index) {
       setMovies(movies.filter((movie, i) => i !== index))
+    
     }
+
     function sortByTitle() {
       const sortedMovies = [...movies].sort((a, b) =>
         a.title.localeCompare(b.title)
       )
       setMovies(sortedMovies)
     }
+
     function sortByRating() {
       const sortedMovies = [...movies].sort((a, b) => b.rating - a.rating)
       setMovies(sortedMovies)
@@ -37,7 +43,7 @@ function App() {
       <h2>Lägg till en film</h2>
 
       <form onSubmit={addMovie}>
-        <label htmlFor="rating">Titel:</label>
+        <label htmlFor="title">Titel:</label>
         <input
           type="text"
           id="title"
