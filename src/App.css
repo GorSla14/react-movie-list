@@ -77,3 +77,24 @@ li {
     padding: 10px 12px;
     cursor: pointer;
 }
+
+@media (max-width: 600px) {
+    #root {
+        width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    li {
+        grid-template-columns: minmax(0, 1fr) auto 25px;
+        gap: 8px;
+    }
+
+    .stars {
+        font-size: 16px;
+    }
+
+    .sort-btn {
+      margin-bottom: 8px;
+    }
+}
