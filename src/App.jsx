@@ -44,7 +44,7 @@ function App() {
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
-        
+
         <label htmlFor="rating">Betyg:</label>
         <select
           id="rating"
@@ -60,14 +60,15 @@ function App() {
         <button type='submit'>Lägg till film</button>
       </form>
 
-      <button type="button" onClick={sortByTitle}>Sortera alfabetiskt</button>
-      <button type="button" onClick={sortByRating}>Sortera efter betyg</button>
+      <button className="sort-btn" type="button" onClick={sortByTitle}>Sortera alfabetiskt</button>
+      <button className="sort-btn" type="button" onClick={sortByRating}>Sortera efter betyg</button>
 
         <ul>
           {movies.map((movie, index) => (
             <li key={index}>
-              {movie.title} - {'★'.repeat(movie.rating)}
-              <button onClick={() => removeMovie(index)}>✖</button>
+              <span>{movie.title}</span>
+              <span className="stars">{'★'.repeat(movie.rating)}</span>
+              <button className="remove-btn" onClick={() => removeMovie(index)}>✖</button>
             </li>
           ))}
         </ul>
