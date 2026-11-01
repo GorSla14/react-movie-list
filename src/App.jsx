@@ -26,6 +26,10 @@ function App() {
       )
       setMovies(sortedMovies)
     }
+    function sortByRating() {
+      const sortedMovies = [...movies].sort((a, b) => b.rating - a.rating)
+      setMovies(sortedMovies)
+    }
 
   return (
     <>
@@ -53,7 +57,8 @@ function App() {
       </form>
 
       <button type="button" onClick={sortByTitle}>Sortera alfabetiskt</button>
-      
+      <button type="button" onClick={sortByRating}>Sortera efter betyg</button>
+
         <ul>
           {movies.map((movie, index) => (
             <li key={index}>
