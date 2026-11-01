@@ -8,9 +8,23 @@ function App() {
 
     function addMovie(event) {
       event.preventDefault()
+      if (title.trim() === '') {
+        alert('Du måste ange en filmtitel!')
+      }
 
       const newMovie = { title: title, rating: Number(rating) }
       setMovies([...movies, newMovie])
+      setTitle('')
+      setRating('1')
+    }
+    function removeMovie(index) {
+      setMovies(movies.filter((movie, i) => i !== index))
+    }
+    function sortByTitle() {
+      const sortedMovies = [...movies].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      )
+      setMovies(sortedMovies)
     }
 
   return (
@@ -37,10 +51,14 @@ function App() {
         </select>
         <button type='submit'>Lägg till film</button>
       </form>
+
+      <button type="button" onClick={sortByTitle}>Sortera alfabetiskt</button>
+      
         <ul>
           {movies.map((movie, index) => (
             <li key={index}>
-              {movie.title} - {movie.rating}/5
+              {movie.title} - {'★'.repeat(movie.rating)}
+              <button onClick={() => removeMovie(index)}>✖</button>
             </li>
           ))}
         </ul>
